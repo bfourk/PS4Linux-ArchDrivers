@@ -1,42 +1,49 @@
-# Original Maintainer: Jan de Groot <jgc@archlinux.org>
-# PS4 Maintainer: Nazky <@NazkyYT>
+# Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=libdrm-ps4
 _pkgname=libdrm
-pkgver=2.4.110
+pkgver=2.4.123
 pkgrel=1
-pkgdesc="Userspace interface to kernel DRM services PS4 version"
+pkgdesc="Userspace interface to kernel DRM services"
 url="https://dri.freedesktop.org/"
 arch=(x86_64)
-license=('custom')
-depends=('libpciaccess')
+license=('MIT')
+depends=('libpciaccess' 'glibc')
 makedepends=('python-docutils' 'meson')
 checkdepends=('cairo')
-provides=('libdrm')
-conflicts=('libdrm')
-source=(https://dri.freedesktop.org/$_pkgname/$_pkgname-$pkgver.tar.xz
+optdepends=('cairo: needed for modetest tool')
+replaces=('libdrm-new' 'libdrm-nouveau')
+source=(https://dri.freedesktop.org/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig}
         libdrm.patch
         COPYING)
-sha512sums=(SKIP
-            SKIP
+sha512sums=('d3e6ba26bbd609fd87ca131690547eeb6a903c0a8c28b7f5cd5d0947619da09f31daf7bf4b6c38bf5e5dc173e2ccba476338ef682d8cf06d6b71ba73fc9b948d'
+            'SKIP'
+            'SKIP'
             'b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660')
 
-prepare() {
-    cd $_pkgname-$pkgver
-    patch -Np1 < ../libdrm.patch
-}
+validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
 
 build() {
+  # Apply libdrm.patch and cd back to src
+  cd $_pkgname-$pkgver
+  patch -Np1 < ../libdrm.patch
+  cd ..
+  
   arch-meson $_pkgname-$pkgver build \
-    -Dudev=false
-  ninja -C build
+    -D udev=true \
+    -D etnaviv=disabled \
+    -D freedreno=disabled \
+    -D vc4=disabled \
+    -D valgrind=disabled \
+    -D install-test-programs=true
+  meson compile -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
