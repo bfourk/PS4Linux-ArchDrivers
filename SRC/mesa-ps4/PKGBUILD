@@ -5,8 +5,9 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa
+_pkgname=mesa
 pkgname=(
-  mesa
+  mesa-ps4
   libva-mesa-driver
   mesa-vdpau
   opencl-clover-mesa
@@ -227,7 +228,7 @@ _pick() {
   done
 }
 
-package_mesa() {
+package_mesa-ps4() {
   depends=(
     expat
     gcc-libs
@@ -301,7 +302,7 @@ package_mesa() {
     ln -sr $libdir/libGLX_{mesa,indirect}.so.0
   )
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_libva-mesa-driver() {
@@ -323,7 +324,7 @@ package_libva-mesa-driver() {
 
   mv libva/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_mesa-vdpau() {
@@ -345,7 +346,7 @@ package_mesa-vdpau() {
 
   mv vdpau/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_opencl-clover-mesa() {
@@ -372,7 +373,7 @@ package_opencl-clover-mesa() {
 
   mv clover/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_opencl-rusticl-mesa() {
@@ -399,7 +400,7 @@ package_opencl-rusticl-mesa() {
 
   mv clrust/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_vulkan-intel() {
@@ -424,7 +425,7 @@ package_vulkan-intel() {
 
   mv vkintel/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_vulkan-mesa-layers() {
@@ -443,7 +444,7 @@ package_vulkan-mesa-layers() {
 
   mv vklayer/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_vulkan-nouveau() {
@@ -468,7 +469,7 @@ package_vulkan-nouveau() {
 
   mv vknvidia/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_vulkan-radeon() {
@@ -495,7 +496,7 @@ package_vulkan-radeon() {
 
   mv vkradeon/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_vulkan-swrast() {
@@ -523,7 +524,7 @@ package_vulkan-swrast() {
 
   mv vkswrast/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_vulkan-virtio() {
@@ -548,7 +549,7 @@ package_vulkan-virtio() {
 
   mv vkvirtio/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 package_mesa-docs() {
@@ -556,7 +557,7 @@ package_mesa-docs() {
 
   mv docs/* "$pkgdir"
 
-  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 mesa-$pkgver/docs/license.rst -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 # vim:set sw=2 sts=-1 et:
