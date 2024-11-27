@@ -6,7 +6,7 @@
 
 pkgbase=lib32-mesa
 pkgname=(
-  lib32-mesa-ps4
+  lib32-mesa
   lib32-opencl-clover-mesa
   lib32-opencl-rusticl-mesa
   lib32-vulkan-intel
@@ -214,7 +214,7 @@ _pick() {
   done
 }
 
-package_lib32-mesa-ps4() {
+package_lib32-mesa() {
   depends=(
     lib32-expat
     lib32-gcc-libs

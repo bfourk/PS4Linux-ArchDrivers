@@ -1,7 +1,6 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
-pkgname=xf86-video-amdgpu-ps4
-_pkgname=xf86-video-amdgpu
+pkgname=xf86-video-amdgpu
 pkgver=23.0.0
 pkgrel=2
 pkgdesc="X.org amdgpu video driver"
@@ -12,13 +11,13 @@ depends=('systemd-libs' 'mesa' 'libdrm' 'glibc')
 makedepends=('xorg-server-devel' 'systemd' 'X-ABI-VIDEODRV_VERSION=25.2')
 conflicts=('xorg-server<1.20.0' 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26')
 groups=('xorg-drivers')
-source=(${url}/releases/individual/driver/${_pkgname}-${pkgver}.tar.xz{,.sig})
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.xz{,.sig})
 sha512sums=('bf26f147629a34e84a0ae8435119e170b9c95edafcab1995b63bb8f55abef32f2efbf4536eb070e64b2ae1460424b1b27a4206cb9836d33ddc6dfbee404f718b'
             'SKIP')
 validpgpkeys=('F1111E4AAF984C9763795FFE4B25B5180522B8D9') # Shashank Sharma <contactshashanksharma@gmail.com>
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   patch -Np1 < ../../xf86-video-amdgpu.patch
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
@@ -36,12 +35,12 @@ build() {
 }
 
 check() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make check
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   make "DESTDIR=${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"

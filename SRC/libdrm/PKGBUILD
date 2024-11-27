@@ -1,7 +1,6 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=libdrm-ps4
-_pkgname=libdrm
+pkgname=libdrm
 pkgver=2.4.123
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services"
@@ -13,7 +12,7 @@ makedepends=('python-docutils' 'meson')
 checkdepends=('cairo')
 optdepends=('cairo: needed for modetest tool')
 replaces=('libdrm-new' 'libdrm-nouveau')
-source=(https://dri.freedesktop.org/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig}
+source=(https://dri.freedesktop.org/$pkgname/$pkgname-$pkgver.tar.xz{,.sig}
         libdrm.patch
         COPYING)
 sha512sums=('d3e6ba26bbd609fd87ca131690547eeb6a903c0a8c28b7f5cd5d0947619da09f31daf7bf4b6c38bf5e5dc173e2ccba476338ef682d8cf06d6b71ba73fc9b948d'
@@ -25,11 +24,11 @@ validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst8
 
 build() {
   # Apply libdrm.patch and cd back to src
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   patch -Np1 < ../libdrm.patch
   cd ..
   
-  arch-meson $_pkgname-$pkgver build \
+  arch-meson $pkgname-$pkgver build \
     -D udev=true \
     -D etnaviv=disabled \
     -D freedreno=disabled \

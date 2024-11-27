@@ -7,7 +7,7 @@
 pkgbase=mesa
 _pkgname=mesa
 pkgname=(
-  mesa-ps4
+  mesa
   libva-mesa-driver
   mesa-vdpau
   opencl-clover-mesa
@@ -228,7 +228,7 @@ _pick() {
   done
 }
 
-package_mesa-ps4() {
+package_mesa() {
   depends=(
     expat
     gcc-libs
