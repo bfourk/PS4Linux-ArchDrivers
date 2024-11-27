@@ -9,6 +9,8 @@ These aren't exhaustive lists, just the stuff I tested.
 ### Broken
 * Vulkan (vkcube causes the entire screen to freeze and artifact, can be recovered by either rebooting or closing the program)
 
+**Note: I'm not sure if this is an issue with mesa or if it's a kernel issue**
+
 ------------
 
 ## How do I install the drivers?
