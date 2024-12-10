@@ -23,9 +23,9 @@ If you want to compile the drivers, run ```makepkg -sr``` in each folder inside 
 You only need the **mesa**/**lib32-mesa** package, the other packages are extranious
 
 `makepkg` and it's flags are better explained [here](https://archlinux.org/pacman/makepkg.8.html)
-## I have an error
+## I have an issue/error
 
-If it isn't already listed as broken, you can make an issue.
+If it isn't already listed as [Broken](#broken), you can make an issue.
 
 -----------
 
