@@ -3,7 +3,7 @@
 
 _pkgbasename=libdrm
 pkgname=lib32-$_pkgbasename
-pkgver=2.4.123
+pkgver=2.4.124
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services (32-bit)"
 url="https://dri.freedesktop.org/"
@@ -13,7 +13,7 @@ depends=('lib32-libpciaccess' 'lib32-glibc' $_pkgbasename)
 makedepends=('meson')
 checkdepends=('lib32-cairo')
 source=(https://dri.freedesktop.org/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz{,.sig})
-sha512sums=('d3e6ba26bbd609fd87ca131690547eeb6a903c0a8c28b7f5cd5d0947619da09f31daf7bf4b6c38bf5e5dc173e2ccba476338ef682d8cf06d6b71ba73fc9b948d'
+sha512sums=('0408c3ae5780c57d19321a9a7b046d656e252b2f48e520b2beb18f83495bea39c445deb9a9a6795b46194051c2ea4da476e08c63972daf841064099df6dff365'
             'SKIP')
 #validpgpkeys=('10A6D91DA1B05BD29F6DEBAC0C74F35979C486BE') # David Airlie <airlied@redhat.com>
 #validpgpkeys=('2617F6F8DEBB0A7A15C405C983FD600E340FB5FF') # Samuel Pitoiset <samuel.pitoiset@gmail.com>
