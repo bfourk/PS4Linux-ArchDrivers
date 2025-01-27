@@ -2,6 +2,8 @@
 ### Drivers for running arch based distro
 ___
 These aren't exhaustive lists, just the stuff I tested.
+
+Tested with [DFAUS-git's 5.4.99 Baikal Kernel](https://github.com/DFAUS-git/ps4-linux-kernel-5.4.99-baikal) on a CUH-2215B PS4
 ### Working
 * XFCE4
 * OpenGL (glxgears, SuperTuxKart, Terraria native, Terraria through Wine w/ WineD3D OpenGL)
@@ -14,7 +16,7 @@ These aren't exhaustive lists, just the stuff I tested.
 ------------
 
 ## How do I install the drivers?
-If you want to install the drivers using the precompiled files, run ```sudo pacman -U *``` in the 'Compiled/x86_64' folder.
+If you want to install the drivers using the precompiled files, run ```sudo pacman -U *``` in the 'Compiled/latest' folder.
 
 ## How do I compile the drivers?
 If you want to compile the drivers, run ```makepkg -sr``` in each folder inside 'SRC'.
@@ -26,6 +28,13 @@ You only need the **mesa**/**lib32-mesa** package, the other packages are extran
 ## I have an issue/error
 
 If it isn't already listed as [Broken](#broken), you can make an issue.
+
+### Current Package Versions:
+lib32-libdrm: 2.4.124-1<br>
+libdrm: 2.4.124-1<br>
+lib32-mesa: 24.3.4-1<br>
+mesa: 24.3.4-1<br>
+xf86-video-amdgpu: 23.0.0-2<br>
 
 -----------
 
