@@ -1,6 +1,6 @@
-diff -ruN xf86-video-amdgpu-23.0-2/src/amdgpu_kms.c xf86-video-amdgpu-23.0.0/src/amdgpu_kms.c
---- xf86-video-amdgpu-23.0-2/src/amdgpu_kms.c	2023-02-22 12:14:50.000000000 -0500
-+++ xf86-video-amdgpu-23.0.0/src/amdgpu_kms.c	2024-11-09 23:09:08.343371082 -0500
+diff -ruN a/src/amdgpu_kms.c b/src/amdgpu_kms.c
+--- a/src/amdgpu_kms.c	2023-02-22 12:14:50.000000000 -0500
++++ b/src/amdgpu_kms.c	2024-11-09 23:09:08.343371082 -0500
 @@ -1510,14 +1510,14 @@
  	else if (info->family < AMDGPU_FAMILY_CI)
  		info->cursor_w = CURSOR_WIDTH;

@@ -1,6 +1,6 @@
-diff -ruN libdrm-2.4.123/data/amdgpu.ids libdrm-2.4.123-2/data/amdgpu.ids
---- libdrm-2.4.123/data/amdgpu.ids	2024-08-26 16:10:22.000000000 -0400
-+++ libdrm-2.4.123-2/data/amdgpu.ids	2024-11-14 15:29:07.140143730 -0500
+diff -ruN a/data/amdgpu.ids b/data/amdgpu.ids
+--- a/data/amdgpu.ids	2024-08-26 16:10:22.000000000 -0400
++++ b/data/amdgpu.ids	2024-11-14 15:29:07.140143730 -0500
 @@ -385,6 +385,10 @@
  699F,	C9,	AMD Radeon 540
  6FDF,	E7,	AMD Radeon RX 590 GME
@@ -12,9 +12,9 @@ diff -ruN libdrm-2.4.123/data/amdgpu.ids libdrm-2.4.123-2/data/amdgpu.ids
  7300,	C1,	AMD FirePro S9300 x2
  7300,	C8,	AMD Radeon R9 Fury Series
  7300,	C9,	AMD Radeon Pro Duo
-diff -ruN libdrm-2.4.123/radeon/r600_pci_ids.h libdrm-2.4.123-2/radeon/r600_pci_ids.h
---- libdrm-2.4.123/radeon/r600_pci_ids.h	2024-08-26 16:10:22.000000000 -0400
-+++ libdrm-2.4.123-2/radeon/r600_pci_ids.h	2024-11-14 15:29:39.943477635 -0500
+diff -ruN a/radeon/r600_pci_ids.h b/radeon/r600_pci_ids.h
+--- a/radeon/r600_pci_ids.h	2024-08-26 16:10:22.000000000 -0400
++++ b/radeon/r600_pci_ids.h	2024-11-14 15:29:39.943477635 -0500
 @@ -473,6 +473,11 @@
  CHIPSET(0x131C, KAVERI_131C, KAVERI)
  CHIPSET(0x131D, KAVERI_131D, KAVERI)
@@ -27,9 +27,9 @@ diff -ruN libdrm-2.4.123/radeon/r600_pci_ids.h libdrm-2.4.123-2/radeon/r600_pci_
  CHIPSET(0x67A0, HAWAII_67A0, HAWAII)
  CHIPSET(0x67A1, HAWAII_67A1, HAWAII)
  CHIPSET(0x67A2, HAWAII_67A2, HAWAII)
-diff -ruN libdrm-2.4.123/radeon/radeon_surface.c libdrm-2.4.123-2/radeon/radeon_surface.c
---- libdrm-2.4.123/radeon/radeon_surface.c	2024-08-26 16:10:22.000000000 -0400
-+++ libdrm-2.4.123-2/radeon/radeon_surface.c	2024-11-14 18:13:48.990098557 -0500
+diff -ruN a/radeon/radeon_surface.c b/radeon/radeon_surface.c
+--- a/radeon/radeon_surface.c	2024-08-26 16:10:22.000000000 -0400
++++ b/radeon/radeon_surface.c	2024-11-14 18:13:48.990098557 -0500
 @@ -86,6 +86,8 @@
      CHIP_HAINAN,
      CHIP_BONAIRE,
