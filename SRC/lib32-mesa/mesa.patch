@@ -1,6 +1,6 @@
-diff -ruN mesa-24.2.6/include/pci_ids/radeonsi_pci_ids.h mesa-24.2.6-2/include/pci_ids/radeonsi_pci_ids.h
---- mesa-24.2.6/include/pci_ids/radeonsi_pci_ids.h	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/include/pci_ids/radeonsi_pci_ids.h	2024-11-09 22:41:37.270124283 -0500
+diff -ruN a/include/pci_ids/radeonsi_pci_ids.h b/include/pci_ids/radeonsi_pci_ids.h
+--- a/include/pci_ids/radeonsi_pci_ids.h	2024-10-30 14:12:27.000000000 -0400
++++ b/include/pci_ids/radeonsi_pci_ids.h	2024-11-09 22:41:37.270124283 -0500
 @@ -88,6 +88,11 @@
  CHIPSET(0x665D, BONAIRE)
  CHIPSET(0x665F, BONAIRE)
@@ -13,9 +13,9 @@ diff -ruN mesa-24.2.6/include/pci_ids/radeonsi_pci_ids.h mesa-24.2.6-2/include/p
  CHIPSET(0x9830, KABINI)
  CHIPSET(0x9831, KABINI)
  CHIPSET(0x9832, KABINI)
-diff -ruN mesa-24.2.6/src/amd/addrlib/src/amdgpu_asic_addr.h mesa-24.2.6-2/src/amd/addrlib/src/amdgpu_asic_addr.h
---- mesa-24.2.6/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-11-09 22:42:43.018094832 -0500
+diff -ruN a/src/amd/addrlib/src/amdgpu_asic_addr.h b/src/amd/addrlib/src/amdgpu_asic_addr.h
+--- a/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-10-30 14:12:27.000000000 -0400
++++ b/src/amd/addrlib/src/amdgpu_asic_addr.h	2024-11-09 22:42:43.018094832 -0500
 @@ -62,7 +62,9 @@
  #define AMDGPU_HAWAII_RANGE     0x28, 0x3C //# 40 <= x < 60
  
@@ -36,9 +36,9 @@ diff -ruN mesa-24.2.6/src/amd/addrlib/src/amdgpu_asic_addr.h mesa-24.2.6-2/src/a
  #define ASICREV_IS_KALINDI(r)          ASICREV_IS(r, KALINDI)
  #define ASICREV_IS_KALINDI_GODAVARI(r) ASICREV_IS(r, GODAVARI)
  
-diff -ruN mesa-24.2.6/src/amd/common/ac_gpu_info.c mesa-24.2.6-2/src/amd/common/ac_gpu_info.c
---- mesa-24.2.6/src/amd/common/ac_gpu_info.c	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/src/amd/common/ac_gpu_info.c	2024-11-09 22:49:25.938163846 -0500
+diff -ruN a/src/amd/common/ac_gpu_info.c b/src/amd/common/ac_gpu_info.c
+--- a/src/amd/common/ac_gpu_info.c	2024-10-30 14:12:27.000000000 -0400
++++ b/src/amd/common/ac_gpu_info.c	2024-11-09 22:49:25.938163846 -0500
 @@ -837,6 +837,8 @@
        case FAMILY_KV:
           identify_chip2(SPECTRE, KAVERI);
@@ -81,10 +81,19 @@ diff -ruN mesa-24.2.6/src/amd/common/ac_gpu_info.c mesa-24.2.6-2/src/amd/common/
     /* 2 SEs / 8 RBs */
     case CHIP_TAHITI:
     case CHIP_PITCAIRN:
-diff -ruN mesa-24.2.6/src/amd/common/amd_family.c mesa-24.2.6-2/src/amd/common/amd_family.c
---- mesa-24.2.6/src/amd/common/amd_family.c	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/src/amd/common/amd_family.c	2024-11-09 22:47:04.026100236 -0500
-@@ -170,6 +170,10 @@
+diff -ruN a/src/amd/common/amd_family.c b/src/amd/common/amd_family.c
+--- a/src/amd/common/amd_family.c   2024-10-30 14:12:27.000000000 -0400
++++ b/src/amd/common/amd_family.c   2024-11-09 22:47:04.026100236 -0500
+@@ -23,6 +23,8 @@
+    CASE(OLAND);
+    CASE(HAINAN);
+    CASE(BONAIRE);
++   CASE(LIVERPOOL);
++   CASE(GLADIUS);
+    CASE(KABINI);
+    CASE(KAVERI);
+    CASE(HAWAII);
+@@ -108,6 +110,10 @@
        return "hainan";
     case CHIP_BONAIRE:
        return "bonaire";
@@ -95,9 +104,9 @@ diff -ruN mesa-24.2.6/src/amd/common/amd_family.c mesa-24.2.6-2/src/amd/common/a
     case CHIP_KABINI:
        return "kabini";
     case CHIP_KAVERI:
-diff -ruN mesa-24.2.6/src/amd/common/amd_family.h mesa-24.2.6-2/src/amd/common/amd_family.h
---- mesa-24.2.6/src/amd/common/amd_family.h	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/src/amd/common/amd_family.h	2024-11-09 22:45:05.646076728 -0500
+diff -ruN a/src/amd/common/amd_family.h b/src/amd/common/amd_family.h
+--- a/src/amd/common/amd_family.h	2024-10-30 14:12:27.000000000 -0400
++++ b/src/amd/common/amd_family.h	2024-11-09 22:45:05.646076728 -0500
 @@ -80,6 +80,8 @@
     CHIP_HAINAN,
     /* GFX7 (Sea Islands) */
@@ -107,9 +116,9 @@ diff -ruN mesa-24.2.6/src/amd/common/amd_family.h mesa-24.2.6-2/src/amd/common/a
     CHIP_KAVERI,
     CHIP_KABINI,
     CHIP_HAWAII,         /* Radeon 290, 390 */
-diff -ruN mesa-24.2.6/src/amd/vulkan/winsys/null/radv_null_winsys.c mesa-24.2.6-2/src/amd/vulkan/winsys/null/radv_null_winsys.c
---- mesa-24.2.6/src/amd/vulkan/winsys/null/radv_null_winsys.c	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/src/amd/vulkan/winsys/null/radv_null_winsys.c	2024-11-09 22:47:16.150104289 -0500
+diff -ruN a/src/amd/vulkan/winsys/null/radv_null_winsys.c b/src/amd/vulkan/winsys/null/radv_null_winsys.c
+--- a/src/amd/vulkan/winsys/null/radv_null_winsys.c	2024-10-30 14:12:27.000000000 -0400
++++ b/src/amd/vulkan/winsys/null/radv_null_winsys.c	2024-11-09 22:47:16.150104289 -0500
 @@ -27,6 +27,10 @@
     [CHIP_OLAND] = {0x6060, 2, true},
     [CHIP_HAINAN] = {0x6660, 2, true},
@@ -121,9 +130,9 @@ diff -ruN mesa-24.2.6/src/amd/vulkan/winsys/null/radv_null_winsys.c mesa-24.2.6-
     [CHIP_KAVERI] = {0x1304, 2, false},
     [CHIP_KABINI] = {0x9830, 2, false},
     [CHIP_HAWAII] = {0x67A0, 16, true},
-diff -ruN mesa-24.2.6/src/gallium/targets/d3dadapter9/description.c mesa-24.2.6-2/src/gallium/targets/d3dadapter9/description.c
---- mesa-24.2.6/src/gallium/targets/d3dadapter9/description.c	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/src/gallium/targets/d3dadapter9/description.c	2024-11-09 22:47:34.306110876 -0500
+diff -ruN a/src/gallium/targets/d3dadapter9/description.c b/src/gallium/targets/d3dadapter9/description.c
+--- a/src/gallium/targets/d3dadapter9/description.c	2024-10-30 14:12:27.000000000 -0400
++++ b/src/gallium/targets/d3dadapter9/description.c	2024-11-09 22:47:34.306110876 -0500
 @@ -36,6 +36,8 @@
      {"KAVERI",                      "AMD Radeon(TM) R7 Graphics"},
      {"KABINI",                      "AMD Radeon HD 8400 / R3 Series"},
@@ -133,9 +142,9 @@ diff -ruN mesa-24.2.6/src/gallium/targets/d3dadapter9/description.c mesa-24.2.6-
      {"OLAND",                       "AMD Radeon HD 8670"},
      {"HAINAN",                      "AMD Radeon HD 8600M Series"},
      {"TAHITI",                      "AMD Radeon HD 7900 Series"},
-diff -ruN mesa-24.2.6/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c mesa-24.2.6-2/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c
---- mesa-24.2.6/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c	2024-10-30 14:12:27.000000000 -0400
-+++ mesa-24.2.6-2/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c	2024-11-09 22:48:41.374140270 -0500
+diff -ruN a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c b/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c
+--- a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c	2024-10-30 14:12:27.000000000 -0400
++++ b/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c	2024-11-09 22:48:41.374140270 -0500
 @@ -259,6 +259,8 @@
        ws->info.gfx_level = GFX6;
        break;
@@ -166,3 +175,14 @@ diff -ruN mesa-24.2.6/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c mesa-24.
           ws->info.max_se = 4;
           break;
        }
+--- a/src/gallium/winsys/radeon/drm/radeon_surface.c   2025-04-05 17:11:35.970953234 -0400
++++ b/src/gallium/winsys/radeon/drm/radeon_surface.c    2025-04-05 17:11:51.679020550 -0400
+@@ -78,6 +78,8 @@
+     CHIP_OLAND,
+     CHIP_HAINAN,
+     CHIP_BONAIRE,
++    CHIP_LIVERPOOL,
++    CHIP_GLADIUS,
+     CHIP_KAVERI,
+     CHIP_KABINI,
+     CHIP_HAWAII,
