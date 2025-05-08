@@ -3,7 +3,7 @@
 ___
 These aren't exhaustive lists, just the stuff I tested.
 
-Tested with [DFAUS-git's 5.4.99 Baikal Kernel](https://github.com/DFAUS-git/ps4-linux-kernel-5.4.99-baikal) on a CUH-2215B PS4
+Tested with [DFAUS-git's 5.4.99 Baikal Kernel](https://github.com/DFAUS-git/ps4-linux-kernel-5.4.99-baikal) (Upstreamed to 5.4.291) on a CUH-2215B PS4
 ### Working
 * XFCE4
 * OpenGL (glxgears, SuperTuxKart, Terraria native, Terraria through Wine w/ WineD3D OpenGL)
