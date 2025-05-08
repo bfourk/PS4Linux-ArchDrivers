@@ -32,8 +32,8 @@ If it isn't already listed as [Broken](#broken), you can make an issue.
 ### Current Package Versions:
 lib32-libdrm: 2.4.124-1<br>
 libdrm: 2.4.124-1<br>
-lib32-mesa: 24.3.4-1<br>
-mesa: 24.3.4-1<br>
+lib32-mesa: 1:25.1.0-1<br>
+mesa: 1:25.1.0-1<br>
 xf86-video-amdgpu: 23.0.0-2<br>
 
 -----------

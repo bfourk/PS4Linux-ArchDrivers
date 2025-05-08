@@ -82,8 +82,8 @@ diff -ruN a/src/amd/common/ac_gpu_info.c b/src/amd/common/ac_gpu_info.c
     case CHIP_TAHITI:
     case CHIP_PITCAIRN:
 diff -ruN a/src/amd/common/amd_family.c b/src/amd/common/amd_family.c
---- a/src/amd/common/amd_family.c	2024-10-30 14:12:27.000000000 -0400
-+++ b/src/amd/common/amd_family.c	2024-11-09 22:47:04.026100236 -0500
+--- a/src/amd/common/amd_family.c   2024-10-30 14:12:27.000000000 -0400
++++ b/src/amd/common/amd_family.c   2024-11-09 22:47:04.026100236 -0500
 @@ -23,6 +23,8 @@
     CASE(OLAND);
     CASE(HAINAN);
