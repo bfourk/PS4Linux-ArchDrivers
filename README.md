@@ -1,9 +1,14 @@
+# NOTE: I will no longer be updating this until I can get a 5.15.x+ kernel running on my PS4
+
+
 # PS4Linux-ArchDrivers
 ### Drivers for running arch based distro
 ___
 These aren't exhaustive lists, just the stuff I tested.
 
 Tested with [DFAUS-git's 5.4.99 Baikal Kernel](https://github.com/DFAUS-git/ps4-linux-kernel-5.4.99-baikal) (Upstreamed to 5.4.291) on a CUH-2215B PS4
+
+- **The current version will not work on Baikal as the latest supported kernel is 5.4.x**
 ### Working
 * XFCE4
 * OpenGL (glxgears, SuperTuxKart, Terraria native, Terraria through Wine w/ WineD3D OpenGL)
