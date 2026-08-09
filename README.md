@@ -1,20 +1,18 @@
-# NOTE: I will no longer be updating this until I can get a 5.15.x+ kernel running on my PS4
-
-
 # PS4Linux-ArchDrivers
 ### Drivers for running arch based distro
 ___
 These aren't exhaustive lists, just the stuff I tested.
 
-Tested with [DFAUS-git's 5.4.99 Baikal Kernel](https://github.com/DFAUS-git/ps4-linux-kernel-5.4.99-baikal) (Upstreamed to 5.4.291) on a CUH-2215B PS4
+Tested with [rmuxnet's 7.0.8 Baikal Kernel](https://github.com/rmuxnet/linux/tree/baikal/7.0.8-Stable) (Upstreamed to 7.1.7) on a CUH-2215B PS4
 
 - **The current version will not work on Baikal as the latest supported kernel is 5.4.x**
 ### Working
 * XFCE4
 * OpenGL (glxgears, SuperTuxKart, Terraria native, Terraria through Wine w/ WineD3D OpenGL)
+* Very basic Vulkan apps (vkcube)
 * YouTube @ 4K on Firefox
 ### Broken
-* Vulkan (vkcube causes the entire screen to freeze and artifact, can be recovered by either rebooting or closing the program)
+* Most Vulkan apps (Heavy display artifacts; DXVK and WineD3D w/ Vulkan show issues)
 
 **Note: I'm not sure if this is an issue with mesa or if it's a kernel issue**
 
@@ -35,11 +33,11 @@ You only need the **mesa**/**lib32-mesa** package, the other packages are extran
 If it isn't already listed as [Broken](#broken), you can make an issue.
 
 ### Current Package Versions:
-lib32-libdrm: 2.4.124-1<br>
-libdrm: 2.4.124-1<br>
-lib32-mesa: 1:25.1.0-1<br>
-mesa: 1:25.1.0-1<br>
-xf86-video-amdgpu: 23.0.0-2<br>
+lib32-libdrm: 2.4.134<br>
+libdrm: 2.4.134<br>
+lib32-mesa: 1:26.1.6-1<br>
+mesa: 1:26.1.6-1<br>
+xf86-video-amdgpu: 25.0.0<br>
 
 -----------
 

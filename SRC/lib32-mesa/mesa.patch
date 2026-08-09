@@ -27,7 +27,7 @@ diff -ruN a/src/amd/addrlib/src/amdgpu_asic_addr.h b/src/amd/addrlib/src/amdgpu_
  #define AMDGPU_KALINDI_RANGE    0x81, 0xA1 //# 129 <= x < 161
  #define AMDGPU_GODAVARI_RANGE   0xA1, 0xFF //# 161 <= x < max
  
-@@ -134,6 +136,8 @@
+@@ -136,6 +138,8 @@
  
  #define ASICREV_IS_SPECTRE(r)          ASICREV_IS(r, SPECTRE)
  #define ASICREV_IS_SPOOKY(r)           ASICREV_IS(r, SPOOKY)
@@ -39,16 +39,7 @@ diff -ruN a/src/amd/addrlib/src/amdgpu_asic_addr.h b/src/amd/addrlib/src/amdgpu_
 diff -ruN a/src/amd/common/ac_gpu_info.c b/src/amd/common/ac_gpu_info.c
 --- a/src/amd/common/ac_gpu_info.c	2024-10-30 14:12:27.000000000 -0400
 +++ b/src/amd/common/ac_gpu_info.c	2024-11-09 22:49:25.938163846 -0500
-@@ -837,6 +837,8 @@
-       case FAMILY_KV:
-          identify_chip2(SPECTRE, KAVERI);
-          identify_chip2(SPOOKY, KAVERI);
-+         identify_chip2(STARSHA, LIVERPOOL);
-+         identify_chip2(STARSHP, GLADIUS);
-          identify_chip2(KALINDI, KABINI);
-          identify_chip2(GODAVARI, KABINI);
-          break;
-@@ -1166,6 +1168,8 @@
+@@ -572,6 +572,8 @@
        case CHIP_VERDE:
        case CHIP_HAINAN:
        case CHIP_BONAIRE:
@@ -57,7 +48,16 @@ diff -ruN a/src/amd/common/ac_gpu_info.c b/src/amd/common/ac_gpu_info.c
        case CHIP_KAVERI:
        case CHIP_ICELAND:
        case CHIP_CARRIZO:
-@@ -2127,6 +2131,8 @@
+@@ -626,6 +628,8 @@
+       case FAMILY_KV:
+          identify_chip2(SPECTRE, KAVERI);
+          identify_chip2(SPOOKY, KAVERI);
++         identify_chip2(STARSHA, LIVERPOOL);
++         identify_chip2(STARSHP, GLADIUS);
+          identify_chip2(KALINDI, KABINI);
+          identify_chip2(GODAVARI, KABINI);
+          break;
+@@ -2191,6 +2195,8 @@
     case CHIP_PITCAIRN:
     case CHIP_VERDE:
     case CHIP_BONAIRE:
@@ -66,7 +66,7 @@ diff -ruN a/src/amd/common/ac_gpu_info.c b/src/amd/common/ac_gpu_info.c
     case CHIP_HAWAII:
     case CHIP_TONGA:
     case CHIP_FIJI:
-@@ -2177,6 +2183,14 @@
+@@ -2241,6 +2247,14 @@
        raster_config = 0x16000012;
        raster_config_1 = 0x00000000;
        break;
@@ -84,7 +84,7 @@ diff -ruN a/src/amd/common/ac_gpu_info.c b/src/amd/common/ac_gpu_info.c
 diff -ruN a/src/amd/common/amd_family.c b/src/amd/common/amd_family.c
 --- a/src/amd/common/amd_family.c   2024-10-30 14:12:27.000000000 -0400
 +++ b/src/amd/common/amd_family.c   2024-11-09 22:47:04.026100236 -0500
-@@ -23,6 +23,8 @@
+@@ -19,6 +19,8 @@
     CASE(OLAND);
     CASE(HAINAN);
     CASE(BONAIRE);
@@ -93,7 +93,7 @@ diff -ruN a/src/amd/common/amd_family.c b/src/amd/common/amd_family.c
     CASE(KABINI);
     CASE(KAVERI);
     CASE(HAWAII);
-@@ -108,6 +110,10 @@
+@@ -105,6 +107,10 @@
        return "hainan";
     case CHIP_BONAIRE:
        return "bonaire";
@@ -116,36 +116,10 @@ diff -ruN a/src/amd/common/amd_family.h b/src/amd/common/amd_family.h
     CHIP_KAVERI,
     CHIP_KABINI,
     CHIP_HAWAII,         /* Radeon 290, 390 */
-diff -ruN a/src/amd/vulkan/winsys/null/radv_null_winsys.c b/src/amd/vulkan/winsys/null/radv_null_winsys.c
---- a/src/amd/vulkan/winsys/null/radv_null_winsys.c	2024-10-30 14:12:27.000000000 -0400
-+++ b/src/amd/vulkan/winsys/null/radv_null_winsys.c	2024-11-09 22:47:16.150104289 -0500
-@@ -27,6 +27,10 @@
-    [CHIP_OLAND] = {0x6060, 2, true},
-    [CHIP_HAINAN] = {0x6660, 2, true},
-    [CHIP_BONAIRE] = {0x6640, 4, true},
-+   [CHIP_LIVERPOOL] = { 0x9920, 2, false },
-+   [CHIP_LIVERPOOL] = { 0x9922, 2, false },
-+   [CHIP_LIVERPOOL] = { 0x9923, 2, false },
-+   [CHIP_GLADIUS] = { 0x9924, 4, false },
-    [CHIP_KAVERI] = {0x1304, 2, false},
-    [CHIP_KABINI] = {0x9830, 2, false},
-    [CHIP_HAWAII] = {0x67A0, 16, true},
-diff -ruN a/src/gallium/targets/d3dadapter9/description.c b/src/gallium/targets/d3dadapter9/description.c
---- a/src/gallium/targets/d3dadapter9/description.c	2024-10-30 14:12:27.000000000 -0400
-+++ b/src/gallium/targets/d3dadapter9/description.c	2024-11-09 22:47:34.306110876 -0500
-@@ -36,6 +36,8 @@
-     {"KAVERI",                      "AMD Radeon(TM) R7 Graphics"},
-     {"KABINI",                      "AMD Radeon HD 8400 / R3 Series"},
-     {"BONAIRE",                     "AMD Radeon HD 8770"},
-+    {"LIVERPOOL",                   "AMD Liverpool (Playstation 4)"},
-+    {"GLADIUS",                     "AMD Gladius (Playstation 4)"},
-     {"OLAND",                       "AMD Radeon HD 8670"},
-     {"HAINAN",                      "AMD Radeon HD 8600M Series"},
-     {"TAHITI",                      "AMD Radeon HD 7900 Series"},
 diff -ruN a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c b/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c
 --- a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c	2024-10-30 14:12:27.000000000 -0400
 +++ b/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c	2024-11-09 22:48:41.374140270 -0500
-@@ -259,6 +259,8 @@
+@@ -329,6 +329,8 @@
        ws->info.gfx_level = GFX6;
        break;
     case CHIP_BONAIRE:
@@ -154,7 +128,7 @@ diff -ruN a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c b/src/gallium/wins
     case CHIP_KAVERI:
     case CHIP_KABINI:
     case CHIP_HAWAII:
-@@ -472,6 +474,8 @@
+@@ -542,6 +544,8 @@
     case CHIP_VERDE:
     case CHIP_OLAND:
     case CHIP_BONAIRE:
@@ -163,7 +137,7 @@ diff -ruN a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c b/src/gallium/wins
     case CHIP_KAVERI:
        ws->info.max_tcc_blocks = 4;
        break;
-@@ -501,9 +505,11 @@
+@@ -571,9 +575,11 @@
        case CHIP_TAHITI:
        case CHIP_PITCAIRN:
        case CHIP_BONAIRE:
@@ -177,7 +151,7 @@ diff -ruN a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c b/src/gallium/wins
        }
 --- a/src/gallium/winsys/radeon/drm/radeon_surface.c   2025-04-05 17:11:35.970953234 -0400
 +++ b/src/gallium/winsys/radeon/drm/radeon_surface.c    2025-04-05 17:11:51.679020550 -0400
-@@ -78,6 +78,8 @@
+@@ -77,6 +77,8 @@
      CHIP_OLAND,
      CHIP_HAINAN,
      CHIP_BONAIRE,
